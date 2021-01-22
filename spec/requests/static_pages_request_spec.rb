@@ -13,7 +13,7 @@ RSpec.describe "StaticPages", type: :request do
 
   describe "GET /help" do
     it "returns http success" do
-      get "/static_pages/help"
+      get "/help"
       expect(response).to have_http_status(200)
       expect(response.body).to include base_title
       expect(response.body).to_not include "| #{base_title}" 
@@ -22,7 +22,7 @@ RSpec.describe "StaticPages", type: :request do
 
   describe "GET /about" do
     it "returns http success" do
-      get "/static_pages/about"
+      get "/about"
       expect(response).to have_http_status(200)
       expect(response.body).to include base_title
       expect(response.body).to_not include "| #{base_title}" 
@@ -31,7 +31,7 @@ RSpec.describe "StaticPages", type: :request do
 
   describe "GET /contact" do
     it "returns http success" do
-      get "/static_pages/contact"
+      get "/contact"
       expect(response).to have_http_status(200)
       expect(response.body).to include base_title
       expect(response.body).to_not include "| #{base_title}" 
