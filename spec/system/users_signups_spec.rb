@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "UsersSignups", type: :system do
-  scenario "Don\t' create new data when user submits invalid information" do
+  scenario 'Don\'t create new data when user submits invalid information' do
     visit signup_path
     fill_in  'Name',              with: 'Example User'
     fill_in  'Email',             with: 'user@example.com'
