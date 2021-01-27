@@ -27,5 +27,12 @@ RSpec.describe "UsersLogins", type: :system do
       expect(page).to have_link 'Log out', href: logout_path
       expect(page).to have_link 'Profile', href: user_path(user)
     end
+    click_on     'Log out'
+    aggregate_failures do
+      expect(current_path).to eq root_path
+      expect(page).to have_link 'Log in', href: login_path
+      expect(page).to have_no_link 'Log out'
+      expect(page).to have_no_link 'Profile'
+    end
   end
 end

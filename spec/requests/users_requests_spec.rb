@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe "Users", type: :request do
+RSpec.describe "UsersRequests", type: :request do
   describe "POST /users" do
     let(:user) { FactoryBot.attributes_for(:user) }
 
-     it "adds new user with correct signup information" do
+    it "adds new user with correct signup information" do
       aggregate_failures do
         expect do
           post users_path, params: { user: user }
