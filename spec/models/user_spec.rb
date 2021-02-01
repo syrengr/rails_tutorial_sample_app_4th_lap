@@ -43,25 +43,25 @@ RSpec.describe User, type: :model do
     end
   end
 
-  it "is invalid with registered email" do
+  it 'is invalid with registered email' do
     duplicate_user = user.dup
     duplicate_user.email = user.email.upcase
     user.save
     expect(duplicate_user).to be_invalid
   end
 
-  it "is invalid with upcase email" do
+  it 'is invalid with upcase email' do
     user.email = "Foo@ExAMPle.CoM"
     user.save
     expect(user).to be_valid
   end
 
-  it "is invalid with no password" do
+  it 'is invalid with no password' do
     user.password = user.password_confirmation = ' ' * 6
     expect(user).to be_invalid
   end
 
-  it "is invalid with 5-letter passwords" do
+  it 'is invalid with 5-letter passwords' do
     user.password = user.password_confirmation = 'a' * 5
     expect(user).to be_invalid
   end
