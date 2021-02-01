@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "StaticPages", type: :system do
-  scenario "Testing for layout links" do
+  scenario 'Testing for layout links' do
     visit root_path
     aggregate_failures do
       expect(page.title).to eq  "Ruby on Rails Tutorial Sample App"

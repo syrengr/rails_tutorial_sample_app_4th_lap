@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "UsersRequests", type: :request do
-  describe "POST /users" do
+RSpec.describe "Users", type: :request do
+  describe 'POST /users' do
     let(:user) { FactoryBot.attributes_for(:user) }
 
     it 'adds new user with correct signup information' do
@@ -16,7 +16,7 @@ RSpec.describe "UsersRequests", type: :request do
     end
   end
 
-  describe "PATCH /users/:id" do
+  describe 'PATCH /users/:id' do
     let(:user) { FactoryBot.create(:user) }
     before { log_in_as(user) }
     it 'fails edit with wrong information' do
@@ -40,7 +40,7 @@ RSpec.describe "UsersRequests", type: :request do
     end
   end
 
-  describe "before_action: :logged_in_user" do
+  describe 'before_action: :logged_in_user' do
     let(:user) { FactoryBot.create(:user) }
 
     it 'redirects edit when not logged in' do
@@ -62,7 +62,7 @@ RSpec.describe "UsersRequests", type: :request do
     end
   end
 
-  describe "before_action: :correct_user" do
+  describe 'before_action: :correct_user' do
     let(:user) { FactoryBot.create(:user) }
     let(:other_user) { FactoryBot.create(:user) }
 
@@ -81,14 +81,14 @@ RSpec.describe "UsersRequests", type: :request do
     end
   end
 
-  describe "GET /users" do
+  describe 'GET /users' do
     it 'redirects login when not logged in' do
       get users_path
       expect(response).to redirect_to login_url
     end
   end
 
-  describe "DELETE /users/:id" do
+  describe 'DELETE /users/:id' do
     let!(:user) { FactoryBot.create(:user) }
     let!(:admin_user) { FactoryBot.create(:user, :admin) }
 

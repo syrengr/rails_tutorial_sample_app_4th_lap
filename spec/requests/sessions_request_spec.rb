@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "SessionsRequests", type: :request do
+RSpec.describe "Sessions", type: :request do
   let(:user) { FactoryBot.create(:user) }
 
-  describe "Delete /logout" do
+  describe 'Delete /logout' do
     it 'redirects to root_path' do
       post login_path, params: { session: {
         email: user.email,
@@ -25,7 +25,7 @@ RSpec.describe "SessionsRequests", type: :request do
     end
   end
 
-  describe "Remember me" do
+  describe 'Remember me' do
     it 'remembers the cookie when user checks the Remember Me box' do
       log_in_as(user)
       expect(cookies[:remember_token]).not_to eq nil
@@ -36,7 +36,7 @@ RSpec.describe "SessionsRequests", type: :request do
     end
   end
 
-  describe "Friendly forwarding" do
+  describe 'Friendly forwarding' do
     let(:user) { FactoryBot.create(:user) }
     it 'succeeds' do
       get edit_user_path(user)
