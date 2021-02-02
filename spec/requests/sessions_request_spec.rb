@@ -41,7 +41,7 @@ RSpec.describe "Sessions", type: :request do
     it 'succeeds' do
       get edit_user_path(user)
       log_in_as(user)
-      expect(response).to redirect_to edit_user_path(user)
+      expect(response).to redirect_to edit_user_url(user)
     end
   end
 end

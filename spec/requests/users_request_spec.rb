@@ -9,9 +9,9 @@ RSpec.describe "Users", type: :request do
         expect do
           post users_path, params: { user: user }
         end.to change(User, :count).by(1)
-        expect(response).to have_http_status(302)
-        expect(response).to redirect_to user_path(User.last)
-        expect(is_logged_in?).to be_truthy
+        expect(ActionMailer::Base.deliveries.size).to eq(1)
+        expect(response).to redirect_to root_path
+        expect(is_logged_in?).to be_falsy
       end
     end
   end
