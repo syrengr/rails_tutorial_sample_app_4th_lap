@@ -4,6 +4,7 @@ FactoryBot.define do
     sequence(:email) { |n| "test#{n}@example.com" }
     password { "foobar" }
     password_confirmation { "foobar" }
+    activated { true }
 
     trait :admin do
       admin { true }
