@@ -69,4 +69,17 @@ RSpec.describe User, type: :model do
   it 'returns false for a user with nil digest' do
     expect(user.authenticated?(:remember, '')).to be_falsy
   end
+
+  describe "dependent: :destroy" do
+    before do
+      user.save
+      user.microposts.create!(content: "Lorem ipsum")
+    end
+
+    it "succeeds" do
+      expect do
+        user.destroy
+      end.to change(Micropost, :count).by(-1)
+    end
+  end
 end

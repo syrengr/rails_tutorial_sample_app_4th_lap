@@ -8,7 +8,7 @@ RSpec.describe "UsersSignups", type: :system do
     fill_in  'Name',                       with: user.name
     fill_in  'Email',                      with: user.email
     fill_in  'Password',                   with: user.password
-    fill_in  'Password confirmation',      with: user.password
+    fill_in  'Confirmation',               with: user.password
     click_on 'Create my account'
     aggregate_failures do
       expect(current_path).to eq users_path

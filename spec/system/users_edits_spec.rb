@@ -10,7 +10,7 @@ RSpec.describe "UsersEdits", type: :system do
     fill_in    'Name',                       with: ' '
     fill_in    'Email',                      with: 'user@invalid'
     fill_in    'Password',                   with: 'foo'
-    fill_in    'Password confirmation',      with: 'bar'
+    fill_in    'Confirmation',               with: 'bar'
     click_on   'Save changes'
     aggregate_failures do
       expect(current_path).to eq user_path(user)
@@ -25,7 +25,7 @@ RSpec.describe "UsersEdits", type: :system do
     fill_in    'Name',                       with: 'Foo Bar'
     fill_in    'Email',                      with: 'foo@bar.com'
     fill_in    'Password',                   with: ''
-    fill_in    'Password confirmation',      with: ''
+    fill_in    'Confirmation',               with: ''
     click_on   'Save changes'
     aggregate_failures do
       expect(current_path).to eq user_path(user)
