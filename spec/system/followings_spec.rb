@@ -9,12 +9,12 @@ RSpec.describe "Followings", type: :system do
       user.active_relationships.create!(followed_id: other_user.id)
       user.passive_relationships.create!(follower_id: other_user.id)
     end
-    login_as(user)
   end
 
   scenario "The number of following and followers is correct" do
+    login_as(user)
     click_on "following"
-    expect(user.following.count).to eq 1
+    expect(user.following.count).to eq 10
     user.following.each do |u|
       expect(page).to have_link u.name, href: user_path(u)
     end
@@ -27,21 +27,21 @@ RSpec.describe "Followings", type: :system do
   end
 
   scenario "When user clicks on Unfollow, the number of following increases by -1" do
+    login_as(user)
     visit user_path(other_users.first.id)
     expect do
       click_on "Unfollow"
       expect(page).not_to have_link "Unfollow"
-      # Ajaxの処理待ちの為に入れています
       visit current_path
     end.to change(user.following, :count).by(-1)
   end
 
   scenario "When user clicks on Follow, the number of following increases by 1" do
+    login_as(user)
     visit user_path(other_users.last.id)
     expect do
       click_on "Follow"
       expect(page).not_to have_link "Follow"
-      # Ajaxの処理待ちの為に入れています
       visit current_path
     end.to change(user.following, :count).by(1)
   end
